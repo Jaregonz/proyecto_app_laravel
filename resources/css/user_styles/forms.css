@@ -1,0 +1,106 @@
+/* ===== Estilos Generales ===== */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f7f8;
+}
+
+/* ===== Formularios ===== */
+.login__login_form, 
+.register__register_form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Campos del formulario */
+.login__login_form label, 
+.register__register_form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login__login_form .form-control, 
+.register__register_form .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+/* Efecto de foco */
+.login__login_form .form-control:focus, 
+.register__register_form .form-control:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Mensajes de error */
+.login_form__error, 
+.register_form__error {
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Estilo para formularios con errores */
+.login__login_form-error, 
+.register__register_form-error {
+    border: 2px solid #d9534f;
+    animation: shake 0.3s ease-in-out;
+}
+
+/* Animación de sacudida para errores */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* ===== Botones ===== */
+.btn {
+    display: inline-block;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+.btn-danger {
+    background: #d9534f;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #b52b27;
+}
+
+/* Botones alineados en el formulario de registro */
+.register__register_form .form-group.d-flex {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}

@@ -13,4 +13,15 @@ class Post extends Model
         'n_likes',
         'belongs_to'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'belongs_to');
+    }
+
+    // Relación con los comentarios
+    public function comments()
+    {
+        return $this->hasMany(Comments::class, 'post_id');
+    }
 }

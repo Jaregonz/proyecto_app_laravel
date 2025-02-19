@@ -53,7 +53,7 @@ class UserController
     }
 
     public function showLogin() {
-        return view('user_views.login'); // CARGA LA VIEW DE LOGIN PARA PODER REALIZAR LOGIN
+        return view('users_views.login');
     }
 
 
@@ -90,9 +90,9 @@ class UserController
         if (Auth::attempt($credentials)) { 
             $request->session()->regenerate();
             
-            $posts = $user->posts()->get();
             
-            return view('users_views.index', compact('posts', 'user')); 
+            $user = User::where('email', $userEmail)->first();
+            return redirect()->route('posts.index', ['id' => $user->id]);
         
         }
 

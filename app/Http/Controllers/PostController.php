@@ -14,7 +14,7 @@ class PostController
 
         $posts = Post::all()->sortByDesc('published_at');
         $usuario = User::find($userId);
-        return view('posts_views.index', compact('posts','usuario'));
+        return view('posts_views.index', compact('posts', 'usuario'));
 
     }
 
@@ -23,13 +23,20 @@ class PostController
         $post = Post::find($id);
         $post->n_likes = $post->n_likes + 1;
         $post->save();
-        return redirect()->route('posts.index', ['id' => $idUser]);
+        return redirect()->route('posts.index', ['userId' => $idUser]);
     }
 
-    public function deletePost($id, $idUser){
+    public function deletePost($id, $idUser)
+    {
         $post = Post::find($id);
         $post->delete();
-        return redirect()->route('posts.index', ['id' => $idUser]);
+        return redirect()->route('posts.index', ['userId' => $idUser]);
+    }
+
+    public function showPost($id)
+    {
+        $post = Post::with('comments')->findOrFail($id);
+        return view('posts_views.show_post_comments', compact('post'));
     }
 
 

@@ -92,7 +92,7 @@ class UserController
             
             
             $user = User::where('email', $userEmail)->first();
-            return redirect()->route('posts.index', ['id' => $user->id]);
+            return redirect()->route('posts.index', ['userId' => $user->id]);
         
         }
 

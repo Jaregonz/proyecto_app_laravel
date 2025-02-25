@@ -7,6 +7,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/{id}/{userId}', [PostController::class, 'likePost'])->name('posts.like');
     Route::delete('/{id}/{userId}', [PostController::class, 'deletePost'])->name('posts.delete');
 
-    Route::get('/show-post/{id}', [PostController::class, 'showPost'])->name('post.show');
+    Route::get('/show-post/{id}/{userId}', [PostController::class, 'showPost'])->name('post.show');
 
 });

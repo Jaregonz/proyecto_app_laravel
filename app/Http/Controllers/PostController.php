@@ -33,10 +33,10 @@ class PostController
         return redirect()->route('posts.index', ['userId' => $idUser]);
     }
 
-    public function showPost($id)
+    public function showPost($id, $userId)
     {
         $post = Post::with('comments')->findOrFail($id);
-        return view('posts_views.show_post_comments', compact('post'));
+        return view('posts_views.show_post_comments', compact('post','userId'));
     }
 
 

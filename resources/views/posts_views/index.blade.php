@@ -14,7 +14,7 @@
     <ul>
         @foreach ($posts as $post)
             <li>
-                <a href="{{ route('post.show', $post->id) }}">
+                <a href="{{ route('post.show', ['id' => $post->id, 'userId' => $usuario->id]) }}">
                     <div class="card">
                         <h3>{{ $post->title }}</h3>
                         <p>{{ $post->description }}</p>

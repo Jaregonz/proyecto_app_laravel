@@ -7,7 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Posts</title>
 </head>
+<header>
+<nav class="navbar">
+        <div class="navbar-brand">
+            <a href="">PostCity</a>
+        </div>
 
+        <div class="navbar-links">
+            <a href="{{ route('post.showCreatePostForm') }}">Añadir Post</a>
+            <a href="{{ route('user.deleteConfirm') }}">Eliminar cuenta</a>
+            <a href="{{ route('user.logoutConfirm') }}">Cerrar Sesión</a>
+        </div>
+    </nav>
+</header>
 <body>
     <h1>Lista de Publicaciones</h1>
     <h2>Bienvenido, {{ $usuario->name }}</h2>

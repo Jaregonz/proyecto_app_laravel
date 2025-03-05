@@ -107,3 +107,67 @@ p {
 .form-group .btn-submit:focus {
     outline: none;
 }
+/* Barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1b3a2f; /* Verde oscuro */
+    padding: 15px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Marca o logo */
+.navbar-brand a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e4f1e1; /* Blanco suave */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand a:hover {
+    color: #aad5a3; /* Verde claro al pasar el mouse */
+}
+
+/* Enlaces de navegación */
+.navbar-links {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-links a {
+    color: #e4f1e1; /* Blanco suave */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    color: #aad5a3; /* Verde claro al pasar el mouse */
+}
+
+/* Estilo general de la barra */
+.navbar a {
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Sutil cambio de fondo */
+}
+
+/* Estilo del enlace de cerrar sesión */
+.navbar-links a:last-child {
+    background-color: #2c6e3d; /* Verde más claro */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.navbar-links a:last-child:hover {
+    background-color: #245d33; /* Verde más oscuro */
+}

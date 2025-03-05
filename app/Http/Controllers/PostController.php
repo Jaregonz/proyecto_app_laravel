@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 
 class PostController
 {
-    //
-    public function showIndexPosts($userId)
+    public function showIndexPosts()
     {
-
         $posts = Post::all()->sortByDesc('published_at');
-        $usuario = User::find($userId);
+        $usuario = Auth::user();
         return view('posts_views.index', compact('posts', 'usuario'));
-
     }
 
     public function likePost($id, $idUser)
@@ -38,6 +36,27 @@ class PostController
         $post = Post::with('comments')->findOrFail($id);
         return view('posts_views.show_post_comments', compact('post','userId'));
     }
+    public function showCreatePost()
+    {
+        return view('posts_views.create_post_form');
+    }
+    public function store(Request $request)
+{
+    $request->validate([
+        'titulo' => 'required|string|max:255',
+        'descripcion' => 'required|string'
+    ]);
+    $path = $request->file('foto')->store('/app/public');
 
+    $post = new Post();
+    $post->title = $request->title;
+    echo ($path);
+    $post->description = $request->description;
+    $post->foto = $path;
+    $post->belongs_to = auth()->id();
+    $post->save();
+
+    return redirect()->route('posts.index')->with('success', 'Post creado exitosamente.');
+}
 
 }

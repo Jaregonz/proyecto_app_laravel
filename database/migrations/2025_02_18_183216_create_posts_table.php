@@ -18,7 +18,7 @@ return new class extends Migration
             $table->dateTime('publish_date');
             $table->integer('n_likes');
             $table->unsignedBigInteger('belongs_to');
-            $table->foreign('belongs_to')->references('id')->on('users');
+            $table->foreign('belongs_to')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

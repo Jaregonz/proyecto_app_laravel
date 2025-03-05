@@ -9,19 +9,22 @@ use App\Models\User;
 
 class UserController
 {
-    public function showUserRegister() {
-        return view('users_views.user_register_form'); 
+    public function showUserRegister()
+    {
+        return view('users_views.user_register_form');
     }
 
-    public function doRegister(Request $request) {
+    public function doRegister(Request $request)
+    {
         $validator = Validator::make(
             $request->all(),
             [
-                "name"=>"required|string|max:20",
-                "email"=> "required|email:rfc,dns|unique:App\Models\User,email",
-                "password"=>"required|min:5|max:20|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/",
-                "password_repeat"=>"required|same:password"
-            ],[
+                "name" => "required|string|max:20",
+                "email" => "required|email:rfc,dns|unique:App\Models\User,email",
+                "password" => "required|min:5|max:20|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/",
+                "password_repeat" => "required|same:password"
+            ],
+            [
                 "name.required" => "El nombre es obligatorio",
                 "name.string" => "El nombre debe ser un texto",
                 "name.max" => "El nombre debe contener 20 carácteres máximo",
@@ -40,7 +43,7 @@ class UserController
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
         }
-        
+
 
         $datosUsuario = $request->all();
         $user = new User();
@@ -52,12 +55,14 @@ class UserController
         return view('users_views.login');
     }
 
-    public function showLogin() {
+    public function showLogin()
+    {
         return view('users_views.login');
     }
 
 
-    public function doLogin(Request $request) {
+    public function doLogin(Request $request)
+    {
         $validator = Validator::make(
             $request->all(),
             [
@@ -77,7 +82,7 @@ class UserController
         $userEmail = $request->get('email');
         $userPassword = $request->get('password');
         $user = User::where('email', $userEmail)->first();
-        if(!password_verify($userPassword, $user->password)) {
+        if (!password_verify($userPassword, $user->password)) {
             $validator->errors()->add('credentials', 'Credenciales incorrectas');
             return redirect()->route('login')->withErrors($validator)->withInput();
         }
@@ -87,14 +92,33 @@ class UserController
             'password' => $userPassword,
         ];
 
-        if (Auth::attempt($credentials)) { 
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            
-            
+
+
             $user = User::where('email', $userEmail)->first();
             return redirect()->route('posts.index', ['userId' => $user->id]);
-        
+
         }
 
+    }
+
+    public function showLogoutConfirm(){
+        return view('users_views.logout_confirm');
+    }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login')->with('success', 'Has cerrado sesión correctamente.');
+    }
+
+    public function showDeleteConfirm(){
+        return view('users_views.delete_user_confirm');
+    }
+
+    public function deleteUser(){
+        $user = Auth::user();
+        $user->delete();
+        return redirect()->route('login')->with('success', 'Usuario eliminado correctamente.');
     }
 }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-@vite('resources/css/posts_styles/index.css')
+@vite('resources/css/posts_styles/styles.css')
 @php
     use App\Models\User;
 @endphp
@@ -53,7 +53,7 @@
                 required></textarea>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Publicar Comentario</button>
+            <button type="submit" class="btn-publicar btn btn-primary">Publicar Comentario</button>
         </div>
     </form>
 </body>

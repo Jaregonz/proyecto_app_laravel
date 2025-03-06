@@ -1,10 +1,14 @@
-@vite('resources/css/posts_styles/index.css')
+@vite('resources/css/posts_styles/styles.css')
+@php
+    use App\Models\User;
+@endphp
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Lista de Posts</title>
 </head>
 <header>
@@ -35,6 +39,7 @@
                             <img src="{{ asset('/storage/' . $post->foto) }}" alt="Imagen del post" class="post-image">
                         @endif
                         <p>Publicado el: {{ $post->publish_date }}</p>
+                        <p>Usuario: {{ User::find($post->belongs_to)->name }}</p>
                         <div class="post-meta">
                             <p>Likes: {{ $post->n_likes }}</p>
                             <p>Comentarios: {{ $post->comments->count() }}</p>
@@ -44,14 +49,18 @@
                                 method="POST">
                                 @csrf
                                 @method('PUT')
-                                <button type="submit">Like</button>
+                                <button type="submit" class="btn-like">
+                                    <i class="fas fa-heart"></i> Like
+                                </button>
                             </form>
                             <?php    if ($post->belongs_to == $usuario->id): ?>
                             <form action="{{ route('posts.delete', ['id' => $post->id, 'userId' => $usuario->id]) }}"
                                 method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit">Eliminar Post</button>
+                                <button type="submit" class="btn-delete">
+                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                </button>
                             </form>
 
                             <?php    endif; ?>

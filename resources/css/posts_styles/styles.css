@@ -159,7 +159,6 @@ p {
     background-color: rgba(0, 0, 0, 0.1); /* Sutil cambio de fondo */
 }
 
-/* Estilo del enlace de cerrar sesión */
 .navbar-links a:last-child {
     background-color: #2c6e3d; /* Verde más claro */
     color: white;
@@ -175,4 +174,33 @@ p {
 .post-image{
     max-width: 300px;
     max-height: 300px;
+}
+
+.btn-like, .btn-delete, .btn-publicar {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: #0a2711;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-like i, .btn-delete i {
+    margin-right: 5px;
+}
+
+.btn-like:hover {
+    color: red; 
+}
+
+.btn-delete:hover {
+    color: #e74c3c;
+}
+
+.btn-publicar:hover{
+    background-color: #2c5f2c;
+    color: white;
 }

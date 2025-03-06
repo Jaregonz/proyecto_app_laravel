@@ -63,16 +63,16 @@ class DatabaseSeeder extends Seeder
 
         // Crear posts
         $posts = [
-            ['title' => 'Post 1', 'description' => 'Descripción del primer post', 'publish_date' => Carbon::create('2025', '02', '25', '10', '00', '00'), 'n_likes' => 5, 'belongs_to' => 1],
-            ['title' => 'Post 2', 'description' => 'Descripción del segundo post', 'publish_date' => Carbon::create('2025', '02', '26', '11', '00', '00'), 'n_likes' => 8, 'belongs_to' => 2],
-            ['title' => 'Post 3', 'description' => 'Descripción del tercer post', 'publish_date' => Carbon::create('2025', '02', '27', '12', '00', '00'), 'n_likes' => 12, 'belongs_to' => 3],
-            ['title' => 'Post 4', 'description' => 'Descripción del cuarto post', 'publish_date' => Carbon::create('2025', '02', '28', '13', '00', '00'), 'n_likes' => 15, 'belongs_to' => 4],
-            ['title' => 'Post 5', 'description' => 'Descripción del quinto post', 'publish_date' => Carbon::create('2025', '03', '01', '14', '00', '00'), 'n_likes' => 20, 'belongs_to' => 5],
-            ['title' => 'Post 6', 'description' => 'Descripción del sexto post', 'publish_date' => Carbon::create('2025', '03', '02', '15', '00', '00'), 'n_likes' => 25, 'belongs_to' => 1],
-            ['title' => 'Post 7', 'description' => 'Descripción del séptimo post', 'publish_date' => Carbon::create('2025', '03', '03', '16', '00', '00'), 'n_likes' => 30, 'belongs_to' => 2],
-            ['title' => 'Post 8', 'description' => 'Descripción del octavo post', 'publish_date' => Carbon::create('2025', '03', '04', '17', '00', '00'), 'n_likes' => 35, 'belongs_to' => 3],
-            ['title' => 'Post 9', 'description' => 'Descripción del noveno post', 'publish_date' => Carbon::create('2025', '03', '05', '18', '00', '00'), 'n_likes' => 40, 'belongs_to' => 4],
-            ['title' => 'Post 10', 'description' => 'Descripción del décimo post', 'publish_date' => Carbon::create('2025', '03', '06', '19', '00', '00'), 'n_likes' => 45, 'belongs_to' => 5],
+            ['title' => 'Post 1', 'description' => 'Descripción del primer post', 'publish_date' => Carbon::create('2025', '02', '25', '10', '00', '00'),'foto'=>'posts-images/1.jpg' ,'n_likes' => 5, 'belongs_to' => 1],
+            ['title' => 'Post 2', 'description' => 'Descripción del segundo post', 'publish_date' => Carbon::create('2025', '02', '26', '11', '00', '00'), 'foto'=>'posts-images/2.jpg','n_likes' => 8, 'belongs_to' => 2],
+            ['title' => 'Post 3', 'description' => 'Descripción del tercer post', 'publish_date' => Carbon::create('2025', '02', '27', '12', '00', '00'), 'foto'=>'posts-images/3.jpg', 'n_likes' => 12, 'belongs_to' => 3],
+            ['title' => 'Post 4', 'description' => 'Descripción del cuarto post', 'publish_date' => Carbon::create('2025', '02', '28', '13', '00', '00'),'foto'=>'posts-images/4.jpg', 'n_likes' => 15, 'belongs_to' => 4],
+            ['title' => 'Post 5', 'description' => 'Descripción del quinto post', 'publish_date' => Carbon::create('2025', '03', '01', '14', '00', '00'), 'foto'=>'posts-images/5.jpg', 'n_likes' => 20, 'belongs_to' => 5],
+            ['title' => 'Post 6', 'description' => 'Descripción del sexto post', 'publish_date' => Carbon::create('2025', '03', '02', '15', '00', '00'), 'foto'=>'posts-images/6.jpg', 'n_likes' => 25, 'belongs_to' => 1],
+            ['title' => 'Post 7', 'description' => 'Descripción del séptimo post', 'publish_date' => Carbon::create('2025', '03', '03', '16', '00', '00'), 'foto'=>'posts-images/7.jpg', 'n_likes' => 30, 'belongs_to' => 2],
+            ['title' => 'Post 8', 'description' => 'Descripción del octavo post', 'publish_date' => Carbon::create('2025', '03', '04', '17', '00', '00'), 'foto'=>'posts-images/8.png', 'n_likes' => 35, 'belongs_to' => 3],
+            ['title' => 'Post 9', 'description' => 'Descripción del noveno post', 'publish_date' => Carbon::create('2025', '03', '05', '18', '00', '00'), 'foto'=>'posts-images/9.jpg', 'n_likes' => 40, 'belongs_to' => 4],
+            ['title' => 'Post 10', 'description' => 'Descripción del décimo post', 'publish_date' => Carbon::create('2025', '03', '06', '19', '00', '00'), 'foto'=>'posts-images/10.jpg',  'n_likes' => 45, 'belongs_to' => 5],
         ];
 
         foreach ($posts as $post) {

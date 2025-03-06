@@ -1,4 +1,15 @@
 @vite('resources/css/user_styles/forms.css')
+<header>
+<nav class="navbar">
+        <div class="navbar-brand">
+            <a href="{{ route('login') }}">PostCity</a>
+        </div>
+
+        <div class="navbar-links">
+            <a href="{{ route('login') }}">Iniciar Sesión</a>
+        </div>
+</nav>
+</header>
 <main class="main__register">
     <form class="register__register_form {{ $errors->any() ? 'register__register_form-error' : '' }}" action="{{ route('user.doRegister') }}" method="post">
         @csrf

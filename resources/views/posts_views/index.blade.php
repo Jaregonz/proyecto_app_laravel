@@ -8,9 +8,9 @@
     <title>Lista de Posts</title>
 </head>
 <header>
-<nav class="navbar">
+    <nav class="navbar">
         <div class="navbar-brand">
-            <a href="">PostCity</a>
+            <a href="{{ route('posts.index') }}">PostCity</a>
         </div>
 
         <div class="navbar-links">
@@ -20,6 +20,7 @@
         </div>
     </nav>
 </header>
+
 <body>
     <h1>Lista de Publicaciones</h1>
     <h2>Bienvenido, {{ $usuario->name }}</h2>
@@ -31,7 +32,7 @@
                         <h3>{{ $post->title }}</h3>
                         <p>{{ $post->description }}</p>
                         @if($post->foto)
-                            <img src="{{ asset('/storage/'.$post->foto) }}" alt="Imagen del post" class="post-image">
+                            <img src="{{ asset('/storage/' . $post->foto) }}" alt="Imagen del post" class="post-image">
                         @endif
                         <p>Publicado el: {{ $post->publish_date }}</p>
                         <div class="post-meta">

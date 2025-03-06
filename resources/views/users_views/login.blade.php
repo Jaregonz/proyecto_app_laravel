@@ -1,4 +1,13 @@
 @vite('resources/css/user_styles/forms.css')
+<nav class="navbar">
+                <div class="navbar-brand">
+                    <a href={{ route('login') }}>PostCity</a>
+                </div>
+
+                <div class="navbar-links">
+                    <a href="{{ route('user.showRegister') }}">Registrarse</a>
+                </div>
+    </nav>
 <main class="main__login">
     <form class="login__login_form {{ $errors->any() ? 'login__login_form-error' : '' }}" action="{{ route('login') }}" method="post">
         @csrf

@@ -30,6 +30,9 @@
                     <div class="card">
                         <h3>{{ $post->title }}</h3>
                         <p>{{ $post->description }}</p>
+                        @if($post->foto)
+                            <img src="{{ asset('/storage/'.$post->foto) }}" alt="Imagen del post" class="post-image">
+                        @endif
                         <p>Publicado el: {{ $post->publish_date }}</p>
                         <div class="post-meta">
                             <p>Likes: {{ $post->n_likes }}</p>

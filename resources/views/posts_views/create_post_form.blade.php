@@ -22,7 +22,7 @@
     </nav>
 </header>
 <main class="main__register">
-    <form class="register__register_form {{ $errors->any() ? 'register__register_form-error' : '' }}" action="{{ route('post.storePost') }}" method="post">
+    <form class="register__register_form {{ $errors->any() ? 'register__register_form-error' : '' }}" action="{{ route('post.storePost') }}" method="post" enctype="multipart/form-data">
         <h2 class="cabecera">Nuevo post</h2>
         @csrf
         <div class="form-group">

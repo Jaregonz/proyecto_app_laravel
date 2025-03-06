@@ -18,6 +18,7 @@ return new class extends Migration
             $table->dateTime('publish_date');
             $table->integer('n_likes');
             $table->unsignedBigInteger('belongs_to');
+            $table->string('foto')->nullable();
             $table->foreign('belongs_to')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

@@ -27,6 +27,9 @@
 
     <h1>{{ $post->title }}</h1>
     <h2>{{ $post->description }}</h2>
+    @if($post->foto)
+        <img src="{{ asset('/storage/'.$post->foto) }}" alt="Imagen del post" class="post-image">
+    @endif
     <p>Publicado el: {{ $post->publish_date }}</p>
 
     <h3>Comentarios:</h3>

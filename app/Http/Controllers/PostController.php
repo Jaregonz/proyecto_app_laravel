@@ -34,29 +34,40 @@ class PostController
     public function showPost($id, $userId)
     {
         $post = Post::with('comments')->findOrFail($id);
-        return view('posts_views.show_post_comments', compact('post','userId'));
+        return view('posts_views.show_post_comments', compact('post', 'userId'));
     }
     public function showCreatePost()
     {
         return view('posts_views.create_post_form');
     }
     public function store(Request $request)
-{
-    $request->validate([
-        'titulo' => 'required|string|max:255',
-        'descripcion' => 'required|string'
-    ]);
-    $path = $request->file('foto')->store('/app/public');
-
-    $post = new Post();
-    $post->title = $request->title;
-    echo ($path);
-    $post->description = $request->description;
-    $post->foto = $path;
-    $post->belongs_to = auth()->id();
-    $post->save();
-
-    return redirect()->route('posts.index')->with('success', 'Post creado exitosamente.');
-}
+    {
+        // Validar los datos
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+    
+        // Manejar la imagen
+        $imagePath = null;
+        if ($request->hasFile('foto')) {
+            $imagePath = $request->file('foto')->store('posts-images', 'public');
+        }else{
+            echo "No hay imagen";
+        }
+    
+        // Guardar en la base de datos
+        $post = new Post();
+        $post->title = $request->titulo;
+        $post->description = $request->descripcion;
+        $post->foto = $imagePath;
+        $post->publish_date = now();
+        $post->n_likes = 0;
+        $post->belongs_to = auth()->id();
+        $post->save();
+    
+        return redirect()->route('posts.index')->with('success', 'Post creado correctamente.');
+    }
 
 }

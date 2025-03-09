@@ -8,6 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Document</title>
 </head>
 
@@ -42,6 +43,16 @@
             $usuario = User::find($comment->user_id); 
                                 ?>
                     <p>Publicado por: {{ $usuario->name }} el {{ $comment->publish_date }}</p>
+                    <?php    if ($comment->user_id == Auth::user()->id): ?>
+                    <form action="{{ route('comment.delete', ['commentId' => $comment->id]) }}"
+                                method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn-delete">
+                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                </button>
+                            </form>
+                    <?php endif; ?>
                 </li>
         @endforeach
     </ul>

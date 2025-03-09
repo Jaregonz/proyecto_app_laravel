@@ -33,4 +33,12 @@ class CommentController
     
     }
     
+    public function deleteComment($commentId) {
+        $comment = Comments::findOrFail($commentId);
+        $postId = $comment->post_id;
+        $userId = $comment->user_id;
+        $comment->delete();
+        $post = Post::with('comments')->findOrFail($postId);
+        return view('posts_views.show_post_comments', compact('post', 'userId'));
+    }
 }
